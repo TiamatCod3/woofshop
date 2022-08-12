@@ -9,25 +9,20 @@
 </head>
 <body <?php body_class(); ?>>
 
-
-
-
-
-
-<form action="<?php bloginfo('url'); ?>/loja/" method="get">
-  <input type="text" name="s" placeholder="Buscar" id="s" value="<?php the_search_query(); ?>">
-  <input type="text" name="post_type" value="product" id="">
-  <input type="submit" value="Buscar">
-</form>
-
-
 <?php get_product_search_form(); ?>
 
-
-<?php 
+<?php
 wp_nav_menu([
   'menu' => 'categorias',
-  'container' => false,
-  'menu_class' => false
-  ]);
+  'container' => 'nav',
+  'container_class' => 'menu-categorias'
+])
 ?>
+
+<?php 
+  $cart_count = WC()->cart->get_cart_contents_count();
+  if ($cart_count){
+    echo $cart_count;
+  }
+?>
+

@@ -18,6 +18,24 @@ function exibir_produtos($products){
 }
 ?>
 
+<?php
+function exibir_produto($product){
+  ?>  
+  <ul class="lista-produtos">
+    <li class="item-produto">
+      <a href="<?= $product->get_permalink(); ?>">
+        <div class="info-produto">
+          <?= $product->get_image(); ?>
+          <h2><?= $product->get_name(); ?> - <span><?= $product->get_price_html(); ?></span> </h2> 
+        </div>
+      </a>
+    </li>
+  </ul>
+  <?php 
+}
+
+?>
+
 <?php 
 function produtos_mais_vendidos($quantidade){
   $args  = [
@@ -27,5 +45,17 @@ function produtos_mais_vendidos($quantidade){
   ];
   return wc_get_products($args);
 }
+
+function produtos_em_promocao($quantidade){
+  $args  = [
+    'limit' => $quantidade,
+    'meta_key' => 'total_sales',
+    'orderby' => 'meta_value_num',
+    'order' => 'DESC'
+  ];
+  return wc_get_products($args);
+}
+
+
 ?>
 
