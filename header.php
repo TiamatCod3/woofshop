@@ -8,3 +8,26 @@
   <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
+
+
+
+
+
+
+<form action="<?php bloginfo('url'); ?>/loja/" method="get">
+  <input type="text" name="s" placeholder="Buscar" id="s" value="<?php the_search_query(); ?>">
+  <input type="text" name="post_type" value="product" id="">
+  <input type="submit" value="Buscar">
+</form>
+
+
+<?php get_product_search_form(); ?>
+
+
+<?php 
+wp_nav_menu([
+  'menu' => 'categorias',
+  'container' => false,
+  'menu_class' => false
+  ]);
+?>

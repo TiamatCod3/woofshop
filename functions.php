@@ -30,6 +30,7 @@ add_action( 'woocommerce_before_single_product', 'antes_do_produto');
 require "inc/exibir-produtos.php";
 
 
+register_nav_menu( 'wp_nav_menu', 'Menu de Navegação' );
 
 
 
